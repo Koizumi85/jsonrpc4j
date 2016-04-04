@@ -161,7 +161,7 @@ public class JsonRpcHttpClient
 			boolean useGzip = contentEncoding != null && contentEncoding.equalsIgnoreCase("gzip");
 			try {
 				// in case of http error try to read response body and return it in exception
-				if (useGzip) {
+				if (useGzip && ips != null) {
 					ips = new GZIPInputStream(ips);
 				}
 				return super.readResponse(returnType, ips);
